@@ -8,7 +8,7 @@ node {
    stage('test') {
        nodejs('Nodejs') {
          sh 'npm install --only=dev --no-bin-links'
-         sh 'npm test'
+         sh 'npm test --no-bin-links'
           }
    }
    stage('docker build/push') {

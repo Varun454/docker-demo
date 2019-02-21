@@ -7,7 +7,7 @@ node {
    }
    stage('test') {
        nodejs('Nodejs') {
-         sh 'npm install --only=dev'
+         sh 'npm install --only=dev --no-bin-links'
          sh 'npm test'
           }
    }

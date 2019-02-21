@@ -6,14 +6,14 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     nodejs(nodeJSInstallationName: 'nodejs') {
-       sh 'npm install --only=dev'
-       sh 'npm test'
-     }
+       nodejs('Nodejs') {
+         sh 'npm install --only=dev'
+         sh 'npm test'
+          }
    }
    stage('docker build/push') {
-     withDockerRegistry(credentialsId: '3d937e99-1e83-4f2a-b415-deb6bd91ee4e', url: 'https://cloud.docker.com/repository/registry-1.docker.io/varun454/testrepo') {
-       def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.').push()
+     withDockerRegistry(credentialsId: '3d937e99-1e83-4f2a-b415-deb6bd91ee4e', url: 'https://cloud.docker.com/repository/registry-1.docker.io/') {
+       def app = docker.build("varun454/testrepo/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }
 }

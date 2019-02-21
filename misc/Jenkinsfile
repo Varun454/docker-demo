@@ -12,7 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
-     withDockerRegistry(credentialsId: '3d937e99-1e83-4f2a-b415-deb6bd91ee4e', url: 'https://cloud.docker.com/repository/registry-1.docker.io/') {
+     withDockerRegistry(credentialsId: 'Dockerjenkin', url: 'https://cloud.docker.com/u/varun454/repository/docker/') {
        def app = docker.build("varun454/testrepo/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }

@@ -12,8 +12,8 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://cloud.docker.com/repository/docker/','Dockerjenkin') {
-       def app = docker.build("varun454/testrepo/docker-nodejs-demo:${commit_id}", '.').push()
+     docker.withRegistry('https://index.docker.io/v1/','Dockerjenkin') {
+       def app = docker.build("varun454/docker-nodejs-demo:${commit_id}", '.').push()
      }
    }
 }

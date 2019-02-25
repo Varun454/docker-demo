@@ -9,12 +9,12 @@ node {
      def myTestContainer = docker.image('node:4.6')
      myTestContainer.pull()
      myTestContainer.inside {
-       sh 'npm install --only=dev --no-bin-links'
+      sh 'npm install --only=dev --no-bin-links'
      }
    }                                  
-   stage('docker build/push') {            
-     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-       def app = docker.build("varun454/docker-nodejs-demo:${commit_id}", '.').push()
-     }                                     
-   }                                       
+   stage('docker build/push') {
+     docker.withRegistry('https://index.docker.io/v1/','Dockerjenkin') {
+       def app = docker.build("varun454/docker-nodejs-test:${commit_id}", '.').push()
+     }
+   }                                     
 }  
